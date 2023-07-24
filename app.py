@@ -15,8 +15,8 @@ def main():
 @app.route('/getimage', methods=['POST'])
 @cross_origin()
 def process_data():
-    #PROMPT = request.form['prompt']
-    PROMPT = "darth vader"
+    data = request.get_json()
+    PROMPT = data['prompt']
     openai.api_key = "YOUR API KEY"
     response = openai.Image.create(
         prompt=PROMPT,
